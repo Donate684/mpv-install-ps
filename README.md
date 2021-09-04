@@ -1,3 +1,5 @@
+Retired in favor of [mpv-msix](https://github.com/SilverEzhik/mpv-msix).
+
 ``mpv-install.bat + umpvw`` <img src="https://rossy.github.io/mpv-install/mpv-document.png" align="right">
 ===================
 
