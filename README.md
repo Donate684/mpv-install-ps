@@ -9,7 +9,7 @@ How to install
 --------------
 
 1. Open your mpv folder
-2. Download the zip: [https://github.com/SilverEzhik/mpv-install/raw/master/mpv-install.zip](https://github.com/Donate684/mpv-install-ps/archive/refs/heads/master.zip)
+2. Download the zip: [https://github.com/Donate684/mpv-install-ps/archive/refs/heads/master.zip](https://github.com/Donate684/mpv-install-ps/archive/refs/heads/master.zip)
 3. Copy installer folder and umpvw.exe to the same directory as mpv.exe
 4. Run ``install.bat``
    
