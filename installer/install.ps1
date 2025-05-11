@@ -459,7 +459,7 @@ function Initialize-Form {
     $Global:LogTextBox.Font = New-Object System.Drawing.Font("Consolas", 9)
     $Global:LogTextBox.BackColor = [System.Drawing.Color]::White
 
-    $Global:UpdaterTaskCheckBox.Text = "Manage auto-updater task (C:\ProgramData\mpv\updater.bat & $SettingsXmlName)" # Updated text
+    $Global:UpdaterTaskCheckBox.Text = "Manage auto-updater task"
     $Global:UpdaterTaskCheckBox.Location = New-Object System.Drawing.Point(10, 370)
     $Global:UpdaterTaskCheckBox.AutoSize = $true
     $Global:UpdaterTaskCheckBox.Checked = $false 
