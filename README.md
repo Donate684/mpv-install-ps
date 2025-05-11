@@ -3,7 +3,7 @@
 
 This script sets up file associations for [mpv] on Windows, using [umpvw].
 
-![preview](preview.png?raw=true)
+![preview](preview.jpg?raw=true)
 
 How to install
 --------------
