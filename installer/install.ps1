@@ -12,7 +12,6 @@
 # ├── mpv/              <-- Main mpv directory
 # │   ├── mpv.exe
 # │   ├── umpvw.exe         <-- Wrapper for file associations
-# │   ├── settings.xml      <-- Updater settings (created by this script)
 # │   └── ... (other mpv files)
 # │
 # └── mpv-installer/      <-- Script directory
@@ -339,11 +338,6 @@ function Start-Installation {
     }
     $Global:ProgressBar.Visible = $false
 
-    # --- Updater Task ---
-    if ($Global:UpdaterTaskCheckBox.Checked) {
-        # ... (updater logic remains the same, but now it's clearer where it fits)
-    }
-
     Log-Message "Installation complete!" -Color "Green"
     $Global:InstallButton.Text = "Re-install"
     $Global:InstallButton.Enabled = $true
@@ -483,12 +477,6 @@ function Initialize-Form {
     $CheckboxPanel.AutoSize = $true
     $CheckboxPanel.Margin = [System.Windows.Forms.Padding]::new(10, 0, 10, 5)
     $MainTable.Controls.Add($CheckboxPanel, 0, 2)
-
-    $Global:UpdaterTaskCheckBox = New-Object System.Windows.Forms.CheckBox
-    $UpdaterTaskCheckBox.Text = "Manage auto-updater task (create/remove)"
-    $UpdaterTaskCheckBox.AutoSize = $true
-    $UpdaterTaskCheckBox.Checked = $false # Default to off for safety
-    $CheckboxPanel.Controls.Add($UpdaterTaskCheckBox)
 
     $Global:OpenDefaultProgramsCheckBox = New-Object System.Windows.Forms.CheckBox
     $OpenDefaultProgramsCheckBox.Text = "Open 'Default Apps' settings after installation"
