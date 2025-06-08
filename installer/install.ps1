@@ -439,6 +439,12 @@ function Initialize-Form {
     # --- Form Creation ---
     $Global:MainForm = New-Object System.Windows.Forms.Form
     $MainForm.Text = "mpv Installer / Uninstaller"
+    
+    # Это заставляет форму и ее дочерние элементы корректно изменять размер
+    # в соответствии с настройками масштабирования Windows (например, 150%).
+    # Это ключевой шаг для исправления "мыльности".
+    $MainForm.AutoScaleMode = [System.Windows.Forms.AutoScaleMode]::Dpi
+
     $MainForm.Size = New-Object System.Drawing.Size(640, 520)
     $MainForm.StartPosition = "CenterScreen"
     $MainForm.FormBorderStyle = "FixedDialog"
@@ -554,6 +560,26 @@ function Main {
         exit
     }
     
+    # --- DPI AWARENESS FIX ---
+    # Attempt to set DPI awareness using a direct P/Invoke call to the WinAPI.
+    # This must be done BEFORE any UI elements are created to prevent blurriness on high-DPI displays.
+    try {
+        $csharpSignature = @"
+        using System;
+        using System.Runtime.InteropServices;
+        public static class Win32 {
+            [DllImport("user32.dll")]
+            [return: MarshalAs(UnmanagedType.Bool)]
+            public static extern bool SetProcessDPIAware();
+        }
+"@
+        Add-Type -TypeDefinition $csharpSignature -ErrorAction Stop
+        [Win32]::SetProcessDPIAware() | Out-Null
+    }
+    catch {
+        Write-Warning "Failed to set process DPI awareness. GUI may appear blurry on scaled displays."
+    }
+
     # Launch the GUI
     Initialize-Form
 }
